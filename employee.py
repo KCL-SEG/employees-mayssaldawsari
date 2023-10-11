@@ -101,7 +101,6 @@ class Employee:
         return statement
 
 
-
 # Billie works on a monthly salary of 4000.  Their total pay is 4000.
 billie = Employee('Billie', {'monthly':4000})
 
