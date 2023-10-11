@@ -91,7 +91,7 @@ class Employee:
 
     def __str__(self):
         statement = self.name + " works on a "
-        totalst = ". Their total pay is " + str(self.get_pay()) + "."
+        totalst = ".  Their total pay is " + str(self.get_pay()) + "."
 
         if self.ismonthly():
             statement += "monthy salary of " + str(self.salary()) + self.commstatement() + totalst
