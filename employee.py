@@ -82,7 +82,7 @@ class Employee:
         commst = ""
 
         if self.hasCcomm():
-            commst = " and receives a commisson for " + str(self.numofcontracts()) + " contract(s) at " + str(self.contcomm()) + "/contract"
+            commst = " and receives a commission for " + str(self.numofcontracts()) + " contract(s) at " + str(self.contcomm()) + "/contract"
         
         elif self.hasbonus():
             commst = " and receives a bonus commission of " + str(self.bonuscomm()) 
