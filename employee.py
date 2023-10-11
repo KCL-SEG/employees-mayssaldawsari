@@ -2,14 +2,104 @@
 """ENTER YOUR SOLUTION HERE!"""
 
 class Employee:
-    def __init__(self, name):
+    def __init__(self, name, dict):
         self.name = name
+        self.dict = dict
 
+    def ismonthly(self):
+        monthly = False
+        if 'monthly' in self.dict.keys():
+            monthly = True
+        return monthly
+    
+    def salary(self):
+        salary = self.dict['monthly']
+        return salary
+    
+    def ishourly(self):
+        hourly = False
+        if 'hourly' in self.dict.keys():
+            hourly = True
+        return hourly
+    
+    def numofhours(self):
+        numofhours = self.dict['hourly']
+        return numofhours
+    
+    def hourlyprice(self):
+        hourlyprice = self.dict['price']
+        return hourlyprice
+    
+    def hoursalary(self):
+        money = self.numofhours() * self.hourlyprice()
+        return money
+
+    def hasCcomm(self):
+        hasCcomm = False
+        if 'contracts' in self.dict.keys():
+            hasCcomm = True
+        return hasCcomm
+    
+    def numofcontracts(self):
+        numofcontracts = self.dict['contracts']
+        return numofcontracts
+    
+    def contcomm(self):
+        contcomm = self.dict['commprice']
+        return contcomm
+    
+    def hasbonus(self):
+        hasbonus = False
+        if 'bonus' in self.dict.keys():
+            hasbonus = True
+        return hasbonus
+    
+    def bonuscomm(self):
+        bonuscomm = self.dict['bonus']
+        return bonuscomm
+
+    def commvalue(self):
+        money = 0
+        if self.hasCcomm():
+            money = self.numofcontracts() * self.contcomm()
+        
+        elif self.hasbonus():
+            money = self.bonuscomm()
+        
+        return money
+    
     def get_pay(self):
-        pass
+        total_pay = 0
+
+        if self.ismonthly():
+            total_pay = self.salary() + self.commvalue()
+        elif self.ishourly():
+            total_pay = self.hoursalary() + self.commvalue()
+
+        return total_pay
+
+    def commstatement(self):
+        commst = ""
+
+        if self.hasCcomm():
+            commst = " and recieves a commisson for " + str(self.numofcontracts()) + " contract(s) at " + str(self.contcomm()) + "/contract"
+        
+        elif self.hasbonus():
+            commst = " and recieves a bonus commission of " + str(self.bonuscomm()) 
+        
+        return commst
 
     def __str__(self):
-        return self.name
+        statement = self.name + " works on a "
+        totalst = ". Their total pay is " + str(self.get_pay()) + "."
+
+        if self.ismonthly():
+            statement += "monthy salary of " + str(self.salary()) + self.commstatement() + totalst
+        elif self.ishourly():
+            statement += "contract of " + str(self.numofhours()) + " hours at " + str(self.hourlyprice()) + "/hour" + self.commstatement() + totalst
+
+        return statement
+
 
 
 # Billie works on a monthly salary of 4000.  Their total pay is 4000.
