@@ -82,10 +82,10 @@ class Employee:
         commst = ""
 
         if self.hasCcomm():
-            commst = " and recieves a commisson for " + str(self.numofcontracts()) + " contract(s) at " + str(self.contcomm()) + "/contract"
+            commst = " and receives a commisson for " + str(self.numofcontracts()) + " contract(s) at " + str(self.contcomm()) + "/contract"
         
         elif self.hasbonus():
-            commst = " and recieves a bonus commission of " + str(self.bonuscomm()) 
+            commst = " and receives a bonus commission of " + str(self.bonuscomm()) 
         
         return commst
 
@@ -94,7 +94,7 @@ class Employee:
         totalst = ".  Their total pay is " + str(self.get_pay()) + "."
 
         if self.ismonthly():
-            statement += "monthy salary of " + str(self.salary()) + self.commstatement() + totalst
+            statement += "monthly salary of " + str(self.salary()) + self.commstatement() + totalst
         elif self.ishourly():
             statement += "contract of " + str(self.numofhours()) + " hours at " + str(self.hourlyprice()) + "/hour" + self.commstatement() + totalst
 
